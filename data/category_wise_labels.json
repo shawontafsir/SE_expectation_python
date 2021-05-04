@@ -1,0 +1,55 @@
+{
+  "What are your expectations from your organization?": {
+    "Work Benefits": ["timely salary", "proper salary", "proper food supply", "proper benefits"],
+    "Goal Achievement": ["share goal", "long term goal", "clear goal", "goal achievement"],
+    "Career Opportunities": ["career growth", "career security", "proper structure"],
+    "Work-place culture": ["overtime free", "politics free", "decent environment", "good relation", "work-life balance",
+      "maintain honesty"],
+    "Learning Opportunities":  ["learning", "opportunity", "decision making opportunity", "provide training"],
+    "Proper Management": ["proper guidance", "proper judgement", "proper recognition", "proper management"],
+    "SE practices": ["challenging environment", "compatible business logic", "follow SE practices",
+      "apply effective technologies"]
+  },
+  "What are your expectations from your manager?": {
+    "Team Player": ["guidance", "understanding team members", "proper behavior", "clear communication",
+      "professional behavior"],
+    "Proper Management": ["management skill", "master in project organizer", "proper hierarchy",
+      "proper accountability", "development contributor", "clear goal", "reasonable deadline",
+      "requirement collection skill"],
+    "Tech Savvy": ["technologically proficient", "technologically enthusiastic", "enthusiastic"],
+    "Career Opportunity": ["flexibility", "proper recognition", "training provider"]
+  },
+  "What are your expectations from the employees?": {
+    "Sincerity": ["proactive", "hard working", "passionate", "trustworthy", "sincere", "responsible"],
+    "Friendly": ["good behavior", "decent environment", "helpful", "good relationship"],
+    "SE practitioner":  ["timely delivery", "technologically proficient"]
+  },
+  "What are your expectations from the universities?": {
+    "Proper Teaching": ["proper teaching", "teaching professional SE practices", "teaching cloud techs",
+      "practical teaching", "follow standard teaching practice", "teaching innovative technologies",
+      "behavioral teaching", "redesign the curriculam", "focus on reseach", "share research findings",
+      "improved insights"],
+    "Proper Learning Environment": ["learning environment", "pressure free environment", "proper environment",
+      "focus on weak students", "focus on skills", "helpful to the students", "recommendations", "team work",
+      "team communication"],
+    "Career Focused": ["industry tour", "training", "seminar", "career talk", "collaboration with industry",
+      "manage internship"]
+  },
+  "What are your expectations from the new hires?": {
+    "Sincerity": ["maintain honesty", "good behavior", "transparency", "co-operative", "collaborative",
+      "solidarity", "sincere", "hard working", "adaptive", "progressive"],
+    "SE practitioner": ["clean code", "professional", "having knowledge of CS", "responsible",
+      "problem-solving mind", "careful", "team player", "knowledge sharing", "technologically proficient"],
+    "learning": ["proactive", "enthusiastic", "better thinking", "self-learner", "quick learner",
+      "self-improvement"]
+  },
+  "What are your expectations from your peers in the team?": {
+    "Supportive": ["supportive", "trustworthy", "maintain honesty", "good relationship", "clear communication",
+      "good behavior", "transparency", "proper recognition"],
+    "SE practitioner": ["team player", "clean code practitioner", "timely delivery", "professional",
+      "code review", "responsible", "quality work", "understanding the role", "passionate", "achieving goal",
+      "sincere"],
+    "Learning Environment": ["brainstorming", "knowledge sharing", "tech learner", "better understanding",
+      "learner"]
+  }
+}

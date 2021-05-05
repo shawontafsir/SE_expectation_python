@@ -19,6 +19,7 @@ class Controller(object):
     figure_height = 20
     figure_width = 10
     plot_data = None
+    rename_category = dict()
 
     # palettes = ["deep", "muted", "pastel", "bright", "dark", "colorblind"]
 
@@ -38,7 +39,7 @@ class Controller(object):
         categories_list = list()
         for value in li:
             for v in value.split(', '):
-                categories_list.append(v)
+                categories_list.append(self.rename_category.get(v, v))
 
         return categories_list
 

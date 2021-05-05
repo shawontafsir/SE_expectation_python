@@ -4,8 +4,8 @@ from Base.FigureController import Controller
 
 
 class ExpectationFromGovernmentFigureController(Controller):
-    extension = 'pdf'
-    directory_name = "Expectation_From_Universities.pdf"
+    extension = 'eps'
+    directory_name = "Expectation_From_Universities.eps"
 
     def process_data(self, **kwargs):
         # unique_values = self.get_unique_categories()

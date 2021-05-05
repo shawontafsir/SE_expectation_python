@@ -4,8 +4,8 @@ from Base.FigureController import Controller
 
 
 class ExpectationFromPeersEmployeesFigureController(Controller):
-    extension = 'pdf'
-    directory_name = "Expectation_From_Peers_Employees.pdf"
+    extension = 'eps'
+    directory_name = "Expectation_From_Peers_Employees.eps"
     rename_category = {'Friendly': 'Supportive'}
 
     def process_data(self, **kwargs):

@@ -7,11 +7,11 @@
       "maintain honesty"],
     "Learning Opportunities":  ["learning", "opportunity", "decision making opportunity", "provide training"],
     "Proper Management": ["proper guidance", "proper judgement", "proper recognition", "proper management"],
-    "SE practices": ["challenging environment", "compatible business logic", "follow SE practices",
+    "Knack in Standard SE practice": ["challenging environment", "compatible business logic", "follow SE practices",
       "apply effective technologies"]
   },
   "What are your expectations from your manager?": {
-    "Team Player": ["guidance", "understanding team members", "proper behavior", "clear communication",
+    "People skill": ["guidance", "understanding team members", "proper behavior", "clear communication",
       "professional behavior"],
     "Proper Management": ["management skill", "master in project organizer", "proper hierarchy",
       "proper accountability", "development contributor", "clear goal", "reasonable deadline",
@@ -22,34 +22,55 @@
   "What are your expectations from the employees?": {
     "Sincerity": ["proactive", "hard working", "passionate", "trustworthy", "sincere", "responsible"],
     "Friendly": ["good behavior", "decent environment", "helpful", "good relationship"],
-    "SE practitioner":  ["timely delivery", "technologically proficient"]
+    "Knack in Standard SE practice":  ["timely delivery", "technologically proficient"]
   },
   "What are your expectations from the universities?": {
-    "Proper Teaching": ["proper teaching", "teaching professional SE practices", "teaching cloud techs",
+    "Industry oriented teaching": ["proper teaching", "teaching professional SE practices", "teaching cloud techs",
       "practical teaching", "follow standard teaching practice", "teaching innovative technologies",
       "behavioral teaching", "redesign the curriculam", "focus on reseach", "share research findings",
       "improved insights"],
     "Proper Learning Environment": ["learning environment", "pressure free environment", "proper environment",
       "focus on weak students", "focus on skills", "helpful to the students", "recommendations", "team work",
       "team communication"],
-    "Career Focused": ["industry tour", "training", "seminar", "career talk", "collaboration with industry",
+    "Career support": ["industry tour", "training", "seminar", "career talk", "collaboration with industry",
       "manage internship"]
   },
   "What are your expectations from the new hires?": {
     "Sincerity": ["maintain honesty", "good behavior", "transparency", "co-operative", "collaborative",
       "solidarity", "sincere", "hard working", "adaptive", "progressive"],
-    "SE practitioner": ["clean code", "professional", "having knowledge of CS", "responsible",
+    "Knack in Standard SE practice": ["clean code", "professional", "having knowledge of CS", "responsible",
       "problem-solving mind", "careful", "team player", "knowledge sharing", "technologically proficient"],
-    "learning": ["proactive", "enthusiastic", "better thinking", "self-learner", "quick learner",
+    "Motivation for Learning": ["proactive", "enthusiastic", "better thinking", "self-learner", "quick learner",
       "self-improvement"]
   },
   "What are your expectations from your peers in the team?": {
-    "Supportive": ["supportive", "trustworthy", "maintain honesty", "good relationship", "clear communication",
+    "Supportive attitude": ["supportive", "trustworthy", "maintain honesty", "good relationship", "clear communication",
       "good behavior", "transparency", "proper recognition"],
-    "SE practitioner": ["team player", "clean code practitioner", "timely delivery", "professional",
+    "Knack in Standard SE practice": ["team player", "clean code practitioner", "timely delivery", "professional",
       "code review", "responsible", "quality work", "understanding the role", "passionate", "achieving goal",
       "sincere"],
     "Learning Environment": ["brainstorming", "knowledge sharing", "tech learner", "better understanding",
       "learner"]
+  },
+  "What are your expectations from the Government?": {
+    "Opportunity creation": ["development opportunity", "increase job opportunities",
+      "increase govt job opportunities", "attract tech-giants", "job fairs"],
+    "Policy and facility": ["ensure job security", "transparency", "easy tax process", "corruption-free",
+      "high speed internet with low cost", "enhance facilities", "apply labour law", "employee-friendly regulations",
+      "financial support"],
+    "Proper Education": ["braindrain reduction", "proper curriculam", "increase research fund",
+      "link with universities", "provide sholarship"],
+    "Support for industry": ["recognition of SE industry", "focus on SE industry", "tech-based competition",
+      "standardizing SE practices", "encouragement", "embrace global technologies"]
+  },
+  "What are your expectations from your peers and employees in the team?": {
+    "Supportive attitude": ["supportive", "trustworthy", "maintain honesty", "good relationship", "clear communication",
+      "good behavior", "transparency", "proper recognition", "decent environment", "helpful"],
+    "Knack in Standard SE practice": ["team player", "clean code practitioner", "timely delivery", "professional",
+      "code review", "responsible", "quality work", "understanding the role", "passionate", "achieving goal",
+      "sincere", "technologically proficient"],
+    "Learning Environment": ["brainstorming", "knowledge sharing", "tech learner", "better understanding",
+      "learner"],
+    "Sincerity": ["proactive", "hard working", "passionate", "trustworthy", "sincere", "responsible"]
   }
 }

@@ -3,15 +3,17 @@ from matplotlib import rcParams
 import seaborn as sns
 import numpy as np
 
+from Base.common import get_category_wise_labels
+
 
 class Controller(object):
     xlabel = "Frequency (%)"
     ylabel = ""
-    x_tick_size = 30
-    y_tick_size = 30
+    x_tick_size = 40
+    y_tick_size = 40
     title = None
     directory_name = None
-    axis_title_size = 30
+    axis_title_size = 40
     title_size = 20
     prop_size = 25
     extension = 'eps'
@@ -20,12 +22,15 @@ class Controller(object):
     figure_width = 10
     plot_data = None
     rename_category = dict()
+    question = None
+    category_wise_labels = None
 
     # palettes = ["deep", "muted", "pastel", "bright", "dark", "colorblind"]
 
     def __init__(self, dataframe):
         self.dataframe = dataframe
         self.num_of_respondents = len(dataframe)
+        self.category_wise_labels = get_category_wise_labels(self.question)
         self.root = "../Figures/"
         rcParams.update({'figure.autolayout': True})
         sns.set_palette(self.palette)
@@ -34,17 +39,30 @@ class Controller(object):
         plt.xticks(fontsize=self.x_tick_size)
         plt.yticks(fontsize=self.y_tick_size)
 
-    def get_categories(self):
-        li = list(self.dataframe['categories'])
-        categories_list = list()
+    def get_categories_from_labels(self):
+        li = list(self.dataframe['labels'])
+        categories = list()
         for value in li:
+            row_wise_category = list()
             for v in value.split(', '):
-                categories_list.append(self.rename_category.get(v, v))
+                for key, val in self.category_wise_labels.items():
+                    if v in val and key not in row_wise_category:
+                        row_wise_category.append(key)
+            categories.extend(row_wise_category)
 
-        return categories_list
+        return categories
+
+    # def get_categories(self):
+    #     li = list(self.dataframe['categories'])
+    #     categories_list = list()
+    #     for value in li:
+    #         for v in value.split(', '):
+    #             categories_list.append(self.rename_category.get(v, v))
+    #
+    #     return categories_list
 
     def get_unique_categories(self):
-        categories_list = self.get_categories()
+        categories_list = self.get_categories_from_labels()
         unique = list()
         for category in categories_list:
             if category not in unique:
@@ -56,7 +74,15 @@ class Controller(object):
         self.dataframe = new_dataframe
 
     def process_data(self, **kwargs):
-        pass
+        plot_data = dict()
+
+        for item in self.get_categories_from_labels():
+            if item in plot_data:
+                plot_data[item] += 1
+            else:
+                plot_data[item] = 1
+
+        self.plot_data = plot_data
 
     @staticmethod
     def formatted_response_percentages(options_list, frequency_list):

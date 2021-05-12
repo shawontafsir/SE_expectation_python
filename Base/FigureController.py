@@ -35,7 +35,7 @@ class Controller(object):
         rcParams.update({'figure.autolayout': True})
         sns.set_palette(self.palette)
         sns.set_context("paper")
-        plt.figure(figsize=(self.figure_height, self.figure_width))
+        self.fig, self.ax = plt.subplots(figsize=(self.figure_height, self.figure_width))
         plt.xticks(fontsize=self.x_tick_size)
         plt.yticks(fontsize=self.y_tick_size)
 
@@ -136,8 +136,13 @@ class Controller(object):
 
         print(self.formatted_response_percentages(list(objects), frequency))
 
-        plt.barh(data_objects, frequency, align=align, alpha=alpha, height=height)
+        plt.barh(data_objects, frequency, align=align, alpha=alpha, height=height, color="grey")
         plt.yticks(data_objects, objects)
+
+        # Add annotation to bars
+        for i in self.ax.patches:
+            plt.text(i.get_width() + 0.2, i.get_y() + 0.15, str(round((i.get_width()), 2)), fontsize=14,
+                     fontweight='bold', color='black')
 
         self.draw_figure(save=save)
 
@@ -157,7 +162,7 @@ class Controller(object):
 
         print(self.formatted_response_percentages(list(objects), frequency))
 
-        plt.bar(data_objects, frequency, align=align, alpha=alpha, width=width)
+        plt.bar(data_objects, frequency, align=align, alpha=alpha, width=width, color="grey")
         plt.xticks(data_objects, objects)
         plt.xticks(rotation=90)
 

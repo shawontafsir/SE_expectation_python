@@ -22,7 +22,8 @@
   "What are your expectations from the employees?": {
     "Sincerity": ["proactive", "hard working", "passionate", "trustworthy", "sincere", "responsible"],
     "Friendly": ["good behavior", "decent environment", "helpful", "good relationship"],
-    "Knack in Standard SE practice":  ["timely delivery", "technologically proficient"]
+    "Knack in Standard SE practice":  ["timely delivery", "technologically proficient", "clean code", "documentation",
+      "optimization"]
   },
   "What are your expectations from the universities?": {
     "Industry oriented teaching": ["proper teaching", "teaching professional SE practices", "teaching cloud techs",
@@ -68,7 +69,8 @@
       "good behavior", "transparency", "proper recognition", "decent environment", "helpful"],
     "Knack in Standard SE practice": ["team player", "clean code practitioner", "timely delivery", "professional",
       "code review", "responsible", "quality work", "understanding the role", "passionate", "achieving goal",
-      "sincere", "technologically proficient"],
+      "sincere", "technologically proficient", "clean code", "documentation",
+      "optimization"],
     "Learning Environment": ["brainstorming", "knowledge sharing", "tech learner", "better understanding",
       "learner"],
     "Sincerity": ["proactive", "hard working", "passionate", "trustworthy", "sincere", "responsible"]

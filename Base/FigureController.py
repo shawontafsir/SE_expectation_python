@@ -36,6 +36,8 @@ class Controller(object):
         sns.set_palette(self.palette)
         sns.set_context("paper")
         self.fig, self.ax = plt.subplots(figsize=(self.figure_height, self.figure_width))
+        self.ax.spines['top'].set_visible(False)
+        self.ax.spines['right'].set_visible(False)
         plt.xticks(fontsize=self.x_tick_size)
         plt.yticks(fontsize=self.y_tick_size)
 
@@ -131,17 +133,19 @@ class Controller(object):
         self.plot_data = {k: v for k, v in sorted(self.plot_data.items(), key=lambda item: item[1])}
         objects = self.plot_data.keys()
         data_objects = np.arange(len(objects))
-        frequency = self.plot_data.values()
-        frequency = [rf * 100 / self.num_of_respondents for rf in frequency]
+        frequency = list(self.plot_data.values())
+        frequency_percentage = [rf * 100 / self.num_of_respondents for rf in frequency]
 
-        print(self.formatted_response_percentages(list(objects), frequency))
+        print(self.formatted_response_percentages(list(objects), frequency_percentage))
 
-        plt.barh(data_objects, frequency, align=align, alpha=alpha, height=height, color="grey")
+        plt.barh(data_objects, frequency_percentage, align=align, alpha=alpha, height=height, color="grey")
         plt.yticks(data_objects, objects)
 
         # Add annotation to bars
-        for i in self.ax.patches:
-            plt.text(i.get_width() + 0.2, i.get_y() + 0.15, str(round((i.get_width()), 2)), fontsize=14,
+        patches = self.ax.patches
+        for i in range(len(patches)):
+            plt.text(patches[i].get_width() + 0.2, patches[i].get_y() + 0.1,
+                     str(round(frequency[i], 2)), fontsize=30,
                      fontweight='bold', color='black')
 
         self.draw_figure(save=save)

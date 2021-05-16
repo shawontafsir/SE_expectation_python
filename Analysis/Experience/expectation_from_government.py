@@ -1,13 +1,13 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 import numpy as np
-from FigureGenerators.expectation_from_universities import ExpectationFromUniversityFigureController
 from Base.FigureController import Controller
 from FigureGenerators.expectation_from_government import ExpectationFromGovernmentFigureController
 from FigureGenerators.expectation_from_managers import ExpectationFromManagersFigureController
 from FigureGenerators.expectation_from_new_hires import ExpectationFromNewHiresFigureController
 from FigureGenerators.expectation_from_organization import ExpectationFromOrganizationFigureController
-from FigureGenerators.expectations_from_peers_employees import ExpectationFromPeersEmployeesFigureController
+from FigureGenerators.expectation_from_new_hires import ExpectationFromNewHiresFigureController
+from FigureGenerators.expectation_from_universities import ExpectationFromUniversityFigureController
 from FigureGenerators.expectations_from_peers_employees import ExpectationFromPeersEmployeesFigureController
 
 def short_word(text):
@@ -19,9 +19,8 @@ def short_word(text):
 
 
 def show_stats(df, class_name):
-    question = 'What is your Gender?'
+    question = 'For how many years have you coded professionally?'
     df[question] = df[question].map(lambda x: x.split(";")[-1])
-    df[question] = df[question].map(lambda x: x if x == 'Male' else 'Female')
     unique_roles = df[question].unique()
     controller_role = dict()
     key_item = []
@@ -61,13 +60,13 @@ def show_stats(df, class_name):
 
 
 def show_bar_plot(df, class_name):
-    controller_male = class_name(df[df['What is your Gender?'] == 'Male'])
-    controller_female = class_name(df[df['What is your Gender?'] == 'Female'])
+    controller_male = class_name(df[(df['For how many years have you coded professionally?'] == 'less than 2') | (df['For how many years have you coded professionally?'] == '2 to 5')])
+    controller_female = class_name(df[(df['For how many years have you coded professionally?'] == '5 to 10') | (df['For how many years have you coded professionally?'] == 'more than 10')])
     controller_female.process_data()
     controller_male.process_data()
     all_keys = sorted(set().union(controller_male.plot_data.keys(), controller_female.plot_data.keys()))
-    total_male_data = len(df[df['What is your Gender?'] == 'Male'])
-    total_female_data = len(df[df['What is your Gender?'] == 'Female'])
+    total_male_data = len(df[(df['For how many years have you coded professionally?'] == 'less than 2') | (df['For how many years have you coded professionally?'] == '2 to 5')])
+    total_female_data = len(df[(df['For how many years have you coded professionally?'] == '5 to 10') | (df['For how many years have you coded professionally?'] == 'more than 10')])
     male_data = []
     female_data = []
     for item in all_keys:
@@ -80,13 +79,13 @@ def show_bar_plot(df, class_name):
     r2 = [x + barWidth for x in r1]
 
     # Make the plot
-    plt.bar(r1, male_data, color='#7f6d5f', width=barWidth, edgecolor='white', label='Male')
-    plt.bar(r2, female_data, color='#557f2d', width=barWidth, edgecolor='white', label='Female')
+    plt.bar(r1, male_data, color='#7f6d5f', width=barWidth, edgecolor='white', label='0-5')
+    plt.bar(r2, female_data, color='#557f2d', width=barWidth, edgecolor='white', label='5-10')
 
     # Add xticks on the middle of the group bars
     # plt.xlabel('group', fontweight='bold')
     plt.ylabel('Frequency (%)', fontsize=32)
-    plt.xticks([r + barWidth for r in range(len(all_keys))], all_keys)
+    plt.xticks([r + barWidth for r in range(len(all_keys))], all_keys, rotation=45,fontsize=16)
 
     # Create legend & Show graphic
     plt.legend(prop={'size': 32})
@@ -94,8 +93,8 @@ def show_bar_plot(df, class_name):
 if __name__ == '__main__':
     # Load Data #
     df = pd.read_csv("../../data/government.csv")
-    # # show_bar_plot(df, ExpectationFromGovernmentFigureController)
     show_stats(df, ExpectationFromGovernmentFigureController)
+    # show_bar_plot(df, ExpectationFromGovernmentFigureController)
 
 
     # df = pd.read_csv("../../data/managers.csv")
@@ -104,28 +103,23 @@ if __name__ == '__main__':
     #
     #
     # df = pd.read_csv("../../data/new_hires.csv")
-    # show_bar_plot(df, ExpectationFromNewHiresFigureController)
     # show_stats(df, ExpectationFromNewHiresFigureController)
+    # show_bar_plot(df, ExpectationFromNewHiresFigureController)
     #
     #
     # df = pd.read_csv("../../data/organization.csv")
-    # show_bar_plot(df, ExpectationFromOrganizationFigureController)
+    # #show_bar_plot(df, ExpectationFromOrganizationFigureController)
     # show_stats(df, ExpectationFromOrganizationFigureController)
     #
     #
-    # df = pd.read_csv("../data/peers.csv")
-    # show_bar_plot(df, ExpectationFromPeersFigureController)
-    # show_stats(df, ExpectationFromGovernmentFigureController)
-    #
-    #
     # df = pd.read_csv("../../data/peers_employees.csv")
-    # show_bar_plot(df, ExpectationFromPeersEmployeesFigureController)
     # show_stats(df, ExpectationFromPeersEmployeesFigureController)
+    # show_bar_plot(df, ExpectationFromPeersEmployeesFigureController)
     #
     #
     # df = pd.read_csv("../../data/universities.csv")
-    # # show_bar_plot(df, ExpectationFromGovernmentFigureController)
     # show_stats(df, ExpectationFromUniversityFigureController)
+    # show_bar_plot(df, ExpectationFromGovernmentFigureController)
 
 
 # female manager career opportunity

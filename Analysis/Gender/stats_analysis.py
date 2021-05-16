@@ -17,16 +17,17 @@ def stat_test_career():
         if row[1]['What is your Gender?'] in ['Male', 'Female']:
             gender.append(row[1]['What is your Gender?'])
             if row[1]['categories'].strip() == 'Career Opportunity':
-                career_opportunity.append("Career Opportunity")
+                career_opportunity.append(1)
             else:
-                career_opportunity.append("Others")
+                career_opportunity.append(0)
 
     new_df = pd.DataFrame({
         "gender": gender,
         "career": career_opportunity
     })
-    contingency_table = pd.crosstab(new_df['gender'], new_df["career"])
-    print(ss.chi2_contingency(get_contingency_table(contingency_table, 'Female', "Career Opportunity")))
+    print(ss.mannwhitneyu(new_df[new_df['gender']=='Male']['career'], new_df[new_df['gender']=='Female']['career']))
+    # contingency_table = pd.crosstab(new_df['gender'], new_df["career"])
+    # print(ss.chi2_contingency(get_contingency_table(contingency_table, 'Female', "Career Opportunity")))
 
 def stat_test_team():
     df = pd.read_csv("../../data/managers.csv")
@@ -56,16 +57,15 @@ def stat_test_peer_employee():
         if row[1]['What is your Gender?'] in ['Male', 'Female']:
             gender.append(row[1]['What is your Gender?'])
             if row[1]['categories'].strip() in ['Sincerity','Supportive']:
-                sincerity.append("Sincerity")
+                sincerity.append(1)
             else:
-                sincerity.append("Others")
+                sincerity.append(0)
 
     new_df = pd.DataFrame({
         "gender": gender,
         "sincerity": sincerity
     })
-    contingency_table = pd.crosstab(new_df['gender'], new_df["sincerity"])
-    print(ss.chi2_contingency(get_contingency_table(contingency_table, 'Male', "Sincerity")))
+    print(ss.mannwhitneyu(new_df[new_df['gender']=='Male']['sincerity'], new_df[new_df['gender']=='Female']['sincerity']))
 
 
 def stat_test_university():
@@ -87,4 +87,4 @@ def stat_test_university():
     contingency_table = pd.crosstab(new_df['gender'], new_df['job'])
     print(ss.chi2_contingency(get_contingency_table(contingency_table, 'Female', 'Job Availability')))
 if __name__ == '__main__':
-    stat_test_university()
+    stat_test_peer_employee()

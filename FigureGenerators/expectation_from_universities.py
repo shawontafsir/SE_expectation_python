@@ -3,7 +3,7 @@ import pandas as pd
 from Base.FigureController import Controller
 
 
-class ExpectationFromGovernmentFigureController(Controller):
+class ExpectationFromUniversityFigureController(Controller):
     directory_name = "Expectation_From_Universities.eps"
     question = "What are your expectations from the universities?"
 
@@ -11,6 +11,6 @@ class ExpectationFromGovernmentFigureController(Controller):
 if __name__ == '__main__':
     # Load Data #
     df = pd.read_csv("../data/universities.csv")
-    controller = ExpectationFromGovernmentFigureController(df)
+    controller = ExpectationFromUniversityFigureController(df)
     controller.process_data()
     controller.draw_figure_bar_horizontally(save=True)

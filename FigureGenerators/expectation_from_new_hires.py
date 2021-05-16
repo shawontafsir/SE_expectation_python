@@ -4,6 +4,7 @@ from Base.FigureController import Controller
 
 
 class ExpectationFromNewHiresFigureController(Controller):
+    figure_width = 5
     directory_name = "Expectation_From_New_Hires.eps"
     question = "What are your expectations from the new hires?"
 

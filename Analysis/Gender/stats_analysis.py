@@ -9,14 +9,16 @@ def get_contingency_table(table, row_name, column_name):
     d = table.drop(index=[row_name]).drop(columns=[column_name]).sum().sum()
     return np.array([[a,b],[c,d]])
 
-def stat_test_career():
+def stat_test_manager():
     df = pd.read_csv("../../data/managers.csv")
+    df['What is your Gender?'] = df['What is your Gender?'].map(lambda x: x if x.strip() == 'Male' else 'Female')
     gender = []
     career_opportunity = []
     for row in df.iterrows():
         if row[1]['What is your Gender?'] in ['Male', 'Female']:
             gender.append(row[1]['What is your Gender?'])
-            if row[1]['categories'].strip() == 'Career Opportunity':
+            if any(item.strip() in ['Career Opportunities'] for item in
+                   row[1]['categories'].strip().split(",")):
                 career_opportunity.append(1)
             else:
                 career_opportunity.append(0)
@@ -51,12 +53,53 @@ def stat_test_team():
 
 def stat_test_peer_employee():
     df = pd.read_csv("../../data/peers_employees.csv")
+    df['What is your Gender?'] = df['What is your Gender?'].map(lambda x: x if x.strip() == 'Male' else 'Female')
     gender = []
     sincerity = []
     for row in df.iterrows():
         if row[1]['What is your Gender?'] in ['Male', 'Female']:
             gender.append(row[1]['What is your Gender?'])
-            if row[1]['categories'].strip() in ['Sincerity','Supportive']:
+            if any(item.strip() in ['Sincerity', 'Supportive'] for item in
+                   row[1]['categories'].strip().split(",")):
+                sincerity.append(1)
+            else:
+                sincerity.append(0)
+
+    new_df = pd.DataFrame({
+        "gender": gender,
+        "sincerity": sincerity
+    })
+    print(ss.mannwhitneyu(new_df[new_df['gender']=='Male']['sincerity'], new_df[new_df['gender']=='Female']['sincerity']))
+
+def stat_test_organization():
+    df = pd.read_csv("../../data/organization.csv")
+    df['What is your Gender?'] = df['What is your Gender?'].map(lambda x: x if x == 'Male' else 'Female')
+    gender = []
+    sincerity = []
+    for row in df.iterrows():
+        if row[1]['What is your Gender?'].strip() in ['Male', 'Female']:
+            gender.append(row[1]['What is your Gender?'])
+            if any(item.strip() in ['Knack in Standard SE practice'] for item in row[1]['categories'].strip().split(",")):
+                sincerity.append(1)
+            else:
+                sincerity.append(0)
+
+    new_df = pd.DataFrame({
+        "gender": gender,
+        "sincerity": sincerity
+    })
+    print(ss.mannwhitneyu(new_df[new_df['gender']=='Male']['sincerity'], new_df[new_df['gender']=='Female']['sincerity']))
+
+
+def stat_test_government():
+    df = pd.read_csv("../../data/government.csv")
+    df['What is your Gender?'] = df['What is your Gender?'].map(lambda x: x if x == 'Male' else 'Female')
+    gender = []
+    sincerity = []
+    for row in df.iterrows():
+        if row[1]['What is your Gender?'].strip() in ['Male', 'Female']:
+            gender.append(row[1]['What is your Gender?'])
+            if any(item.strip() in ['Career Opportunities'] for item in row[1]['categories'].strip().split(",")):
                 sincerity.append(1)
             else:
                 sincerity.append(0)
@@ -87,4 +130,4 @@ def stat_test_university():
     contingency_table = pd.crosstab(new_df['gender'], new_df['job'])
     print(ss.chi2_contingency(get_contingency_table(contingency_table, 'Female', 'Job Availability')))
 if __name__ == '__main__':
-    stat_test_peer_employee()
+    stat_test_government()

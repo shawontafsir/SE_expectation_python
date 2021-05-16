@@ -21,7 +21,7 @@ def stat_new_hires():
             gender.append('0-5')
         else:
             gender.append('>5')
-        if row[1]['categories'].strip() == 'Knack in Standard SE practice':
+        if any(item.strip().lower() in ['knack in standard se practice'] for item in row[1]['categories'].strip().split(",")):
             career_opportunity.append(1)
         else:
             career_opportunity.append(0)
@@ -63,7 +63,7 @@ def stat_peers1():
             gender.append('0-5')
         else:
             gender.append('>5')
-        if row[1]['categories'].strip() == 'Supportive attitude':
+        if any(item.strip().lower() in ['sincerity'] for item in row[1]['categories'].strip().split(",")):
             career_opportunity.append(1)
         else:
             career_opportunity.append(0)
@@ -75,4 +75,4 @@ def stat_peers1():
     print(ss.mannwhitneyu(new_df[new_df['gender'] == '>5']['career'], new_df[new_df['gender'] == '0-5']['career']))
 
 if __name__ == '__main__':
-    stat_peers1()
+    stat_new_hires()

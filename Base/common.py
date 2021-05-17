@@ -30,6 +30,6 @@ def get_unique_categories():
 
 
 def get_category_wise_labels(question):
-    data = json.load(open("../../data/category_wise_labels.json", "r"))
+    data = json.load(open("../data/category_wise_labels.json", "r"))
 
     return data.get(question)
